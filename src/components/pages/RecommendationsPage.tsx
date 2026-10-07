@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 export const RecommendationsPage: React.FC = () => {
-  const { recommendations, fields, setActivePage } = useFarm();
+  const { recommendations, fields, setActivePage, t } = useFarm();
 
   return (
     <div className="space-y-8 pb-12">
@@ -18,13 +18,13 @@ export const RecommendationsPage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-            Action Priority Queue
+            {t('navRecommendations')}
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif mt-1">
-            Prioritized Farmer Recommendations
+            {t('actionChecklistTitle')}
           </h1>
           <p className="text-xs sm:text-sm text-stone-500 mt-0.5">
-            Ranked by expected crop yield loss. Every action includes a risk-tested contingency alternative.
+            {t('actionChecklistSub')}
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export const RecommendationsPage: React.FC = () => {
             className="px-4 py-2.5 rounded-xl bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100 font-semibold text-xs transition-colors flex items-center gap-2"
           >
             <Sliders className="w-3.5 h-3.5" />
-            <span>Simulate What-If Water</span>
+            <span>{t('Simulate Water')}</span>
           </button>
         </div>
       </div>

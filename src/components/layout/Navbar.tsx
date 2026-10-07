@@ -80,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, mobileMenuOpen
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
               className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold border border-stone-300 bg-white hover:bg-stone-50 text-stone-800 shadow-2xs transition-all"
-              title="Select language"
+              title={t('selectLanguage')}
             >
               <span>{currentLang.flag}</span>
               <span className="hidden sm:inline">{currentLang.nativeName}</span>
@@ -96,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, mobileMenuOpen
                 <div className="absolute right-0 mt-2 z-50 w-44 bg-white rounded-2xl shadow-xl border border-stone-200 py-1.5 divide-y divide-stone-100">
                   <div className="px-3 py-1.5 text-[10px] font-bold text-stone-400 uppercase tracking-wider flex items-center gap-1.5">
                     <Globe className="w-3 h-3 text-stone-500" />
-                    <span>Select Language</span>
+                    <span>{t('selectLanguage')}</span>
                   </div>
                   <div className="py-1">
                     {supportedLanguages.map((lang) => (

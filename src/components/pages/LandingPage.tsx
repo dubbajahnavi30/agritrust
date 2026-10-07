@@ -14,32 +14,32 @@ import {
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
-  const { setActivePage, setIsJudgeTourOpen, applyJudgeScenarioStep } = useFarm();
+  const { setActivePage, setIsJudgeTourOpen, applyJudgeScenarioStep, t } = useFarm();
 
   const pillars = [
     {
-      title: 'SOIL INTELLIGENCE',
+      title: t('soilIntelligence'),
       icon: Sprout,
-      desc: 'Capacitive depth probes tracking root-zone volumetric water content, depletion rate, and moisture thresholds per crop stage.',
-      highlight: '27% Soil Moisture'
+      desc: t('soilIntelDesc'),
+      highlight: t('27% Soil Moisture')
     },
     {
-      title: 'WEATHER INTELLIGENCE',
+      title: t('weatherIntelligence'),
       icon: CloudRain,
-      desc: 'Local radar integration, hourly precipitation probabilities, and atmospheric evaporative demand (ET0) forecasting.',
-      highlight: '18% Rain Probability'
+      desc: t('weatherIntelDesc'),
+      highlight: t('18% Rain Probability')
     },
     {
-      title: 'CROP HEALTH & STAGE',
+      title: t('cropHealthStage'),
       icon: Activity,
-      desc: 'Phenological sensitivity weighting. High-loss flowering tomato vs drought-hardy vegetative groundnut.',
-      highlight: 'Critical Flowering'
+      desc: t('cropHealthDesc'),
+      highlight: t('Critical Flowering')
     },
     {
-      title: 'WATER AVAILABILITY',
+      title: t('waterAvailability'),
       icon: Droplets,
-      desc: 'Physical reservoir and borewell capacity limits factored into every decision. No blind recommendations.',
-      highlight: '2,000 L Reservoir'
+      desc: t('waterAvailDesc'),
+      highlight: t('2,000 L Reservoir')
     }
   ];
 
@@ -50,18 +50,18 @@ export const LandingPage: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-5 px-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold tracking-wide uppercase shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Next-Gen Agricultural Intelligence</span>
+            <span>{t('nextGenBadge')}</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold text-stone-950 tracking-tight leading-[1.1] font-serif">
-            Smarter Water Decisions. <br />
+            {t('smarterWaterDecisions')} <br />
             <span className="bg-linear-to-r from-emerald-700 via-teal-600 to-emerald-800 bg-clip-text text-transparent">
-              Healthier Crops.
+              {t('healthierCrops')}
             </span>
           </h1>
 
           <p className="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl mx-auto">
-            AgriTrust combines soil, weather, crop-health and water-availability signals to recommend the safest farming action — even when resources are limited or data is uncertain.
+            {t('subHero')}
           </p>
 
           {/* Action CTAs */}
@@ -70,7 +70,7 @@ export const LandingPage: React.FC = () => {
               onClick={() => setActivePage('dashboard')}
               className="px-6 py-3.5 rounded-2xl bg-emerald-800 text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-900/20 hover:bg-emerald-700 hover:scale-102 transition-all flex items-center gap-2"
             >
-              <span>Open Farm Dashboard</span>
+              <span>{t('openFarmDashboard')}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
@@ -82,19 +82,19 @@ export const LandingPage: React.FC = () => {
               className="px-6 py-3.5 rounded-2xl bg-white text-stone-800 font-bold text-sm sm:text-base border border-stone-300 shadow-xs hover:bg-stone-50 hover:border-stone-400 transition-all flex items-center gap-2"
             >
               <PlayCircle className="w-4 h-4 text-emerald-700" />
-              <span>See How It Works (90s)</span>
+              <span>{t('seeHowItWorks')}</span>
             </button>
           </div>
 
           {/* Core differentiator ticker */}
           <div className="pt-4 flex items-center justify-center gap-2 text-xs font-semibold text-stone-500 uppercase tracking-wider">
-            <span className="text-emerald-700">Water</span>
+            <span className="text-emerald-700">{t('flowWater')}</span>
             <span>&rarr;</span>
-            <span className="text-amber-600">Risk</span>
+            <span className="text-amber-600">{t('flowRisk')}</span>
             <span>&rarr;</span>
-            <span className="text-teal-700">Priority</span>
+            <span className="text-teal-700">{t('flowPriority')}</span>
             <span>&rarr;</span>
-            <span className="text-stone-900">Action</span>
+            <span className="text-stone-900">{t('flowAction')}</span>
           </div>
         </div>
 

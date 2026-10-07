@@ -1,5 +1,6 @@
 import React from 'react';
 import { LucideIcon } from 'lucide-react';
+import { useFarm } from '../../context/FarmContext';
 
 interface StatCardProps {
   title: string;
@@ -20,6 +21,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   variant = 'emerald',
   onClick
 }) => {
+  const { t } = useFarm();
   const variantStyles = {
     emerald: {
       border: 'border-emerald-200/80 hover:border-emerald-300',
@@ -53,7 +55,7 @@ export const StatCard: React.FC<StatCardProps> = ({
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">
-            {title}
+            {t(title)}
           </p>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
@@ -61,7 +63,7 @@ export const StatCard: React.FC<StatCardProps> = ({
             </span>
           </div>
           {subtitle && (
-            <p className="text-xs text-stone-500 font-medium pt-0.5">{subtitle}</p>
+            <p className="text-xs text-stone-500 font-medium pt-0.5">{t(subtitle)}</p>
           )}
         </div>
         <div className={`p-3 rounded-xl border border-transparent ${variantStyles.iconBg}`}>
@@ -71,7 +73,7 @@ export const StatCard: React.FC<StatCardProps> = ({
       {badge && (
         <div className="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between">
           <span className={`text-xs px-2 py-0.5 rounded-md border font-medium ${variantStyles.badgeBg}`}>
-            {badge}
+            {t(badge)}
           </span>
         </div>
       )}

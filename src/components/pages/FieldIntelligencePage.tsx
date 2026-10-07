@@ -25,13 +25,13 @@ export const FieldIntelligencePage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-            Multi-Zone Telemetry
+            {t('multiZoneTelemetry')}
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif mt-1">
-            Field Intelligence
+            {t('fieldIntelTitle')}
           </h1>
           <p className="text-xs sm:text-sm text-stone-500 mt-0.5">
-            Real-time biometric and environmental telemetry across 3 cultivated zones.
+            {t('fieldIntelSub')}
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export const FieldIntelligencePage: React.FC = () => {
             className="px-4 py-2.5 rounded-xl bg-emerald-800 text-white font-semibold text-xs hover:bg-emerald-700 transition-colors flex items-center gap-2"
           >
             <Sliders className="w-3.5 h-3.5" />
-            <span>Open Water Simulator</span>
+            <span>{t('openSimulatorBtn')}</span>
           </button>
         </div>
       </div>
@@ -67,13 +67,13 @@ export const FieldIntelligencePage: React.FC = () => {
                 </div>
 
                 <h3 className="text-xl font-bold font-serif text-stone-900 group-hover:text-emerald-800 transition-colors">
-                  {field.name}
+                  {t(field.name)}
                 </h3>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="text-xs font-bold text-stone-700">{field.cropName}</span>
+                  <span className="text-xs font-bold text-stone-700">{t(field.cropName)}</span>
                   <span className="text-xs text-stone-400">•</span>
                   <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-100/80 text-emerald-800 font-medium">
-                    {field.stage} Stage
+                    {t(field.stage)} {t('Stage')}
                   </span>
                 </div>
               </div>
@@ -83,7 +83,7 @@ export const FieldIntelligencePage: React.FC = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-stone-50 rounded-2xl p-3 border border-stone-100">
                     <span className="text-[10px] uppercase font-bold text-stone-400 block">
-                      Soil Moisture
+                      {t('soilMoisture')}
                     </span>
                     <span
                       className={`text-2xl font-extrabold ${
@@ -93,31 +93,31 @@ export const FieldIntelligencePage: React.FC = () => {
                       {field.soilMoisture}%
                     </span>
                     <span className="text-[10px] text-stone-400 block">
-                      Target: &gt;{field.soilMoistureOptimalMin}%
+                      {t('Target')}: &gt;{field.soilMoistureOptimalMin}%
                     </span>
                   </div>
 
                   <div className="bg-stone-50 rounded-2xl p-3 border border-stone-100">
                     <span className="text-[10px] uppercase font-bold text-stone-400 block">
-                      Priority Rank
+                      {t('Priority')} #{field.priorityRank}
                     </span>
                     <span className="text-2xl font-extrabold text-stone-900">
                       #{field.priorityRank}
                     </span>
                     <span className="text-[10px] text-stone-400 block">
-                      {field.economicSensitivity} Economic Risk
+                      {t(field.economicSensitivity)} {t('Risk')}
                     </span>
                   </div>
 
                   <div className="bg-stone-50 rounded-2xl p-3 border border-stone-100">
                     <span className="text-[10px] uppercase font-bold text-stone-400 block">
-                      Water Required
+                      {t('Water Required')}
                     </span>
                     <span className="text-2xl font-extrabold text-sky-700">
                       {field.waterRequiredLiters} L
                     </span>
                     <span className="text-[10px] text-stone-400 block">
-                      Allocated: {alloc ? alloc.allocatedWaterLiters : field.waterRequiredLiters} L
+                      {t('Allocated Water')}: {alloc ? alloc.allocatedWaterLiters : field.waterRequiredLiters} L
                     </span>
                   </div>
 

@@ -14,7 +14,8 @@ export const SensorReliabilityPage: React.FC = () => {
     tomatoAnomalyActive,
     setTomatoAnomalyActive,
     fields,
-    isTechnicalView
+    isTechnicalView,
+    t
   } = useFarm();
 
   const tomatoField = fields.find((f) => f.id === 'field-a') || fields[0];
@@ -28,13 +29,13 @@ export const SensorReliabilityPage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-            Fault-Tolerant Telemetry Engine
+            {t('navSensors')}
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif mt-1">
-            Can We Trust The Data?
+            {t('Can We Trust The Data?')}
           </h1>
           <p className="text-xs sm:text-sm text-stone-500 mt-0.5">
-            AgriTrust cross-validates hardware sensors against physical micro-climate models to detect broken or drifting probes.
+            {t('AgriTrust cross-validates hardware sensors against physical micro-climate models to detect broken or drifting probes.')}
           </p>
         </div>
 

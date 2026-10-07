@@ -20,11 +20,15 @@ import { WeatherIntelligencePage } from './components/pages/WeatherIntelligenceP
 import { RecommendationsPage } from './components/pages/RecommendationsPage';
 import { WhatIfPage } from './components/pages/WhatIfPage';
 import { SettingsPage } from './components/pages/SettingsPage';
+import { useLanguageSync } from './utils/languageSynchronizer';
 
 const AppContent: React.FC = () => {
-  const { activePage, isOffline, isTechnicalView, setIsTechnicalView } = useFarm();
+  const { activePage, isOffline, isTechnicalView, setIsTechnicalView, language, t } = useFarm();
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [isTechModalOpen, setIsTechModalOpen] = useState<boolean>(false);
+
+  // Synchronize entire DOM with current language
+  useLanguageSync(language);
 
   const renderCurrentPage = () => {
     switch (activePage) {
@@ -66,7 +70,7 @@ const AppContent: React.FC = () => {
       {/* Offline Mode Alert Banner (if offline) */}
       {isOffline && (
         <div className="bg-amber-500 text-stone-950 px-4 py-2 text-xs font-bold text-center border-b border-amber-600 flex items-center justify-center gap-2">
-          <span>⚠️ Offline Mode Active — Using cached field telemetry from local memory. Cloud sync paused.</span>
+          <span>{t('offlineBannerText')}</span>
         </div>
       )}
 

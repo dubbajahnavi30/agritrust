@@ -30,7 +30,8 @@ export const WaterSimulatorPage: React.FC = () => {
     setRainCondition,
     allocationsResult,
     fields,
-    isTechnicalView
+    isTechnicalView,
+    t
   } = useFarm();
 
   const fieldBarData = allocationsResult.allocations.map((a) => ({
@@ -53,10 +54,10 @@ export const WaterSimulatorPage: React.FC = () => {
               <span>Signature Feature • Real-Time Optimization</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-white tracking-tight">
-              Where Should Every Litre Go?
+              {t('simulatorTitle')}
             </h1>
             <p className="text-stone-300 text-xs sm:text-sm mt-1 max-w-xl">
-              See how AgriTrust dynamically reallocates limited water according to crop-loss risk and incoming weather shocks.
+              {t('simulatorSub')}
             </p>
           </div>
 
@@ -100,7 +101,7 @@ export const WaterSimulatorPage: React.FC = () => {
             <div className="flex items-center justify-between">
               <label htmlFor="water-slider" className="text-xs font-bold text-sky-950 uppercase tracking-wider flex items-center gap-1.5">
                 <Droplets className="w-4 h-4 text-sky-600" />
-                <span>Available Water (Liters)</span>
+                <span>{t('sliderLabel')}</span>
               </label>
               <span className="text-xl font-extrabold text-sky-900 font-mono bg-white px-2.5 py-0.5 rounded-lg border border-sky-200 shadow-2xs">
                 {availableWater.toLocaleString()} L
@@ -164,10 +165,10 @@ export const WaterSimulatorPage: React.FC = () => {
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
                 <CloudRain className="w-4 h-4 text-emerald-700" />
-                <span>Forecast: Rain Tomorrow</span>
+                <span>{t('rainTomorrow')}</span>
               </label>
               <span className="text-xs font-semibold text-stone-600 capitalize">
-                {rainCondition === 'none' ? 'Clear Sky' : `${rainCondition} Rain`}
+                {rainCondition === 'none' ? t('noRain') : rainCondition === 'light' ? t('lightRain') : t('heavyRain')}
               </span>
             </div>
 
@@ -181,7 +182,7 @@ export const WaterSimulatorPage: React.FC = () => {
                 }`}
               >
                 <SunMedium className="w-4 h-4" />
-                <span>No Rain</span>
+                <span>{t('noRain')}</span>
               </button>
 
               <button
@@ -193,7 +194,7 @@ export const WaterSimulatorPage: React.FC = () => {
                 }`}
               >
                 <CloudRain className="w-4 h-4" />
-                <span>Light Rain</span>
+                <span>{t('lightRain')}</span>
               </button>
 
               <button
@@ -204,8 +205,8 @@ export const WaterSimulatorPage: React.FC = () => {
                     : 'bg-white border-stone-200 text-stone-700 hover:bg-stone-100'
                 }`}
               >
-                <CloudRain className="w-4 h-4 text-indigo-300" />
-                <span>Heavy Rain</span>
+                <CloudRain className="w-4 h-4" />
+                <span>{t('heavyRain')}</span>
               </button>
             </div>
 

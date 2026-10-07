@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Cpu, ArrowDown } from 'lucide-react';
+import { useFarm } from '../../context/FarmContext';
 
 interface TechnicalViewModalProps {
   isOpen: boolean;
@@ -7,6 +8,7 @@ interface TechnicalViewModalProps {
 }
 
 export const TechnicalViewModal: React.FC<TechnicalViewModalProps> = ({ isOpen, onClose }) => {
+  const { t } = useFarm();
   if (!isOpen) return null;
 
   const pipeline = [
@@ -158,7 +160,7 @@ export const TechnicalViewModal: React.FC<TechnicalViewModalProps> = ({ isOpen, 
             onClick={onClose}
             className="px-4 py-2 rounded-xl bg-stone-900 text-white font-medium hover:bg-stone-800 transition-colors"
           >
-            Close Architecture View
+            {t('close')}
           </button>
         </div>
       </div>

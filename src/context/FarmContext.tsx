@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useMemo, useCallback } from
 import { FieldData, WeatherData, FarmConstraints, AllocationResult, RecommendationItem, CropGrowthStage, RiskLevel } from '../types';
 import { initialFields, initialWeather, initialConstraints } from '../data/mockData';
 import { calculateWaterAllocation, generateRecommendations } from '../utils/decisionEngine';
-import { LanguageCode, translations } from '../i18n/translations';
+import { LanguageCode, translations, translateText } from '../i18n/translations';
 import { cropsCatalog } from '../data/cropsCatalog';
 
 export type AppPage =
@@ -77,7 +77,27 @@ const FarmContext = createContext<FarmContextType | undefined>(undefined);
 
 export const FarmProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [activePage, setActivePage] = useState<AppPage>('landing');
-  const [language, setLanguage] = useState<LanguageCode>('en');
+  const [language, setLanguageState] = useState<LanguageCode>(() => {
+    try {
+      const saved = localStorage.getItem('agritrust_language');
+      if (saved && ['en', 'hi', 'te', 'ta', 'kn', 'mr', 'es'].includes(saved)) {
+        return saved as LanguageCode;
+      }
+    } catch {
+      // ignore
+    }
+    return 'en';
+  });
+
+  const setLanguage = useCallback((lang: LanguageCode) => {
+    setLanguageState(lang);
+    try {
+      localStorage.setItem('agritrust_language', lang);
+    } catch {
+      // ignore
+    }
+  }, []);
+
   const [isCropModalOpen, setIsCropModalOpen] = useState<boolean>(false);
   const [targetFieldForCropChange, setTargetFieldForCropChange] = useState<string | null>(null);
 
@@ -94,14 +114,10 @@ export const FarmProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [selectedFieldId, setSelectedFieldId] = useState<string | null>(null);
   const [lastSyncTime, setLastSyncTime] = useState<string>('Just now');
 
-  // Translation helper
+  // Universal translation helper
   const t = useCallback(
-    (key: string): string => {
-      const langDict = translations[language];
-      if (langDict && langDict[key]) {
-        return langDict[key];
-      }
-      return translations.en[key] || key;
+    (keyOrText: string): string => {
+      return translateText(keyOrText, language);
     },
     [language]
   );

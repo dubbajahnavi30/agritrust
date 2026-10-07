@@ -13,7 +13,8 @@ export const DecisionExplanationPage: React.FC = () => {
     weather,
     availableWater,
     tomatoAnomalyActive,
-    recommendations
+    recommendations,
+    t
   } = useFarm();
 
   const [selectedFieldId, setSelectedFieldId] = useState<string>('field-a');
@@ -29,13 +30,13 @@ export const DecisionExplanationPage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-            Explainable Decision Intelligence
+            {t('navExplanation')}
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif mt-1">
-            Why Did AgriTrust Make This Decision?
+            {t('Why Did AgriTrust Make This Decision?')}
           </h1>
           <p className="text-xs sm:text-sm text-stone-500 mt-0.5">
-            Transparent breakdown of evidence, factor weights, and deterministic decision rules.
+            {t('Transparent breakdown of evidence, factor weights, and deterministic decision rules.')}
           </p>
         </div>
 
@@ -51,7 +52,7 @@ export const DecisionExplanationPage: React.FC = () => {
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              {f.cropName}
+              {t(f.cropName)}
             </button>
           ))}
         </div>
@@ -63,21 +64,21 @@ export const DecisionExplanationPage: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 mb-1.5">
               <span className="text-xs font-bold font-mono text-emerald-300 uppercase">
-                Recommendation Verdict
+                {t('Recommendation Verdict')}
               </span>
               <RiskBadge level={rec.riskIfSkipped} size="sm" />
             </div>
             <h2 className="text-xl sm:text-2xl font-bold font-serif text-white">
-              {rec.cropName} ({selectedField.name}): {rec.action}
+              {t(rec.cropName)} ({t(selectedField.name)}): {t(rec.action)}
             </h2>
             <p className="text-xs text-stone-300 mt-0.5">
-              Assigned: {rec.estimatedWaterLiters} L • Best Window: {rec.bestTime}
+              {t('Allocated Water')}: {rec.estimatedWaterLiters} L • {t('Optimal Irrigation Window')}: {rec.bestTime}
             </p>
           </div>
 
           <div className="bg-stone-950/60 px-5 py-3 rounded-2xl border border-emerald-800/60 text-center min-w-[140px]">
             <span className="text-[10px] text-stone-400 uppercase font-semibold block">
-              Confidence Score
+              {t('decisionConfidence')}
             </span>
             <span className="text-2xl font-extrabold text-emerald-400 font-mono">
               {rec.confidence}%

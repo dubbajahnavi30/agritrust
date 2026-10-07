@@ -50,29 +50,29 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
       id: 'fields',
       label: t('navFields'),
       icon: Sprout,
-      badge: `${highRiskCount} Risk`,
+      badge: `${highRiskCount} ${t('Risk')}`,
       badgeColor: 'bg-amber-100 text-amber-800'
     },
     {
       id: 'simulator',
       label: t('navSimulator'),
       icon: Droplets,
-      badge: 'Signature',
+      badge: t('Signature'),
       badgeColor: 'bg-sky-100 text-sky-800 font-bold',
       highlight: true
     },
-    { id: 'explanation', label: t('navExplanation'), icon: HelpCircle, badge: 'Explainable' },
+    { id: 'explanation', label: t('navExplanation'), icon: HelpCircle, badge: t('Explainable') },
     {
       id: 'sensors',
       label: t('navSensors'),
       icon: Activity,
-      badge: tomatoAnomalyActive ? 'Anomaly!' : 'Verified',
+      badge: tomatoAnomalyActive ? t('Anomaly!') : t('Verified'),
       badgeColor: tomatoAnomalyActive ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
     },
     { id: 'crops', label: t('navCrops'), icon: HeartPulse },
     { id: 'weather', label: t('navWeather'), icon: CloudRain },
     { id: 'recommendations', label: t('navRecommendations'), icon: ListChecks },
-    { id: 'whatif', label: t('navWhatIf'), icon: GitFork, badge: 'Constraints' },
+    { id: 'whatif', label: t('navWhatIf'), icon: GitFork, badge: t('Constraints') },
     { id: 'settings', label: t('navSettings'), icon: Settings }
   ];
 
@@ -105,13 +105,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
             </div>
             <div className="min-w-0 flex-1">
               <h4 className="text-sm font-bold text-stone-900 truncate">
-                Green Valley Farm
+                {t('greenValleyFarm')}
               </h4>
-              <p className="text-xs text-stone-500 truncate">Demo Farm • Zone 4</p>
+              <p className="text-xs text-stone-500 truncate">{t('demoFarm')} • Zone 4</p>
             </div>
           </div>
           <div className="mt-2.5 flex items-center justify-between text-[11px] text-stone-600 font-medium bg-white p-2 rounded-lg border border-stone-200">
-            <span>Water Budget</span>
+            <span>{t('Water Available')}</span>
             <span className="font-bold text-sky-700">{availableWater.toLocaleString()} L</span>
           </div>
         </div>
@@ -157,7 +157,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
         {/* Interactive Judge / Fault Injection Control Footer */}
         <div className="p-3 border-t border-stone-200 bg-stone-50 space-y-2">
           <div className="text-[11px] font-bold text-stone-700 uppercase tracking-wider flex items-center justify-between">
-            <span>Hackathon Quick-Inject</span>
+            <span>{t('Hackathon Quick-Inject')}</span>
             <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
           </div>
 
@@ -177,10 +177,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
               />
               <div className="leading-tight">
                 <span className="font-semibold block text-[11px]">
-                  {tomatoAnomalyActive ? 'Fault: Tomato 85%' : 'Simulate Fault'}
+                  {tomatoAnomalyActive ? t('Fault: Tomato 85%') : t('Simulate Fault')}
                 </span>
                 <span className="text-[10px] text-stone-500">
-                  {tomatoAnomalyActive ? 'Anomaly Flagged' : 'Send bad sensor data'}
+                  {tomatoAnomalyActive ? t('Anomaly Flagged') : t('Send bad sensor data')}
                 </span>
               </div>
             </div>
@@ -189,7 +189,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
                 tomatoAnomalyActive ? 'bg-rose-200 text-rose-900' : 'bg-stone-200 text-stone-700'
               }`}
             >
-              {tomatoAnomalyActive ? 'ACTIVE' : 'OFF'}
+              {tomatoAnomalyActive ? t('ACTIVE') : t('OFF')}
             </span>
           </button>
         </div>

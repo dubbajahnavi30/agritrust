@@ -1,5 +1,6 @@
 import React from 'react';
 import { RiskLevel } from '../../types';
+import { useFarm } from '../../context/FarmContext';
 import { AlertTriangle, ShieldCheck, AlertCircle, ShieldAlert } from 'lucide-react';
 
 interface RiskBadgeProps {
@@ -9,6 +10,7 @@ interface RiskBadgeProps {
 }
 
 export const RiskBadge: React.FC<RiskBadgeProps> = ({ level, size = 'md', showIcon = true }) => {
+  const { t } = useFarm();
   const sizeClasses = {
     sm: 'text-xs px-2 py-0.5 gap-1',
     md: 'text-xs sm:text-sm px-2.5 py-1 gap-1.5 font-medium',
@@ -49,7 +51,7 @@ export const RiskBadge: React.FC<RiskBadgeProps> = ({ level, size = 'md', showIc
       className={`inline-flex items-center rounded-full border shadow-xs transition-all ${config.bg} ${sizeClasses[size]}`}
     >
       {showIcon && <IconComponent className={size === 'sm' ? 'w-3 h-3' : size === 'lg' ? 'w-4 h-4' : 'w-3.5 h-3.5'} />}
-      <span>{config.label}</span>
+      <span>{t(config.label)}</span>
       <span className={`w-1.5 h-1.5 rounded-full ${config.dot} animate-pulse`} />
     </span>
   );

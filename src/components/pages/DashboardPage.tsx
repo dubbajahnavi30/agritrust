@@ -45,7 +45,7 @@ export const DashboardPage: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-              Farm Status: Active Monitoring
+              {t('farmStatusActive')}
             </span>
             <span className="text-xs text-stone-400">• Zone 4 / Field Grid 1</span>
           </div>
@@ -70,14 +70,14 @@ export const DashboardPage: React.FC = () => {
             className="px-4 py-2.5 rounded-xl bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100 font-semibold text-xs transition-colors flex items-center gap-2"
           >
             <Sliders className="w-3.5 h-3.5" />
-            <span>Simulate Water</span>
+            <span>{t('simulateWaterBtn')}</span>
           </button>
           <button
             onClick={() => setActivePage('explanation')}
             className="px-4 py-2.5 rounded-xl bg-emerald-800 text-white hover:bg-emerald-700 font-bold text-xs transition-all flex items-center gap-2 shadow-xs"
           >
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>Explain Decisions</span>
+            <span>{t('explainDecisionsBtn')}</span>
           </button>
         </div>
       </div>
@@ -85,7 +85,7 @@ export const DashboardPage: React.FC = () => {
       {/* Large Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
-          title="Water Available"
+          title={t('waterAvailable')}
           value={`${availableWater.toLocaleString()} L`}
           subtitle={availableWater < 1200 ? 'Severe Deficit Warning' : 'Reservoir Capacity: 2,500 L'}
           icon={Droplets}
@@ -95,7 +95,7 @@ export const DashboardPage: React.FC = () => {
         />
 
         <StatCard
-          title="High-Risk Fields"
+          title={t('highRiskFields')}
           value={highRiskCount}
           subtitle="Tomato (Flowering phase)"
           icon={AlertTriangle}
@@ -105,7 +105,7 @@ export const DashboardPage: React.FC = () => {
         />
 
         <StatCard
-          title="Irrigation Needed"
+          title={t('irrigationNeeded')}
           value={`${irrigationNeededCount} fields`}
           subtitle="Tomato (550 L), Chilli (350 L)"
           icon={CheckCircle2}
@@ -115,7 +115,7 @@ export const DashboardPage: React.FC = () => {
         />
 
         <StatCard
-          title={isTechnicalView ? 'Bayesian Confidence' : 'Average Confidence'}
+          title={isTechnicalView ? 'Bayesian Confidence' : t('decisionConfidence')}
           value={`${avgConfidence}%`}
           subtitle={tomatoAnomalyActive ? 'Cross-validation active' : 'Multi-sensor verified'}
           icon={TrendingUp}

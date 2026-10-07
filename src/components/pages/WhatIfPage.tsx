@@ -17,7 +17,8 @@ export const WhatIfPage: React.FC = () => {
     rainCondition,
     setRainCondition,
     setConstraints,
-    allocationsResult
+    allocationsResult,
+    t
   } = useFarm();
 
   // Local scenario inputs
@@ -55,13 +56,13 @@ export const WhatIfPage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-            Constraint-Aware Scenario Sandbox
+            {t('navWhatIf')}
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif mt-1">
-            What If Things Change?
+            {t('whatIfTitle')}
           </h1>
           <p className="text-xs sm:text-sm text-stone-500 mt-0.5">
-            Test farm contingencies: sudden water cuts, power shedding, or unpredicted thunderstorms.
+            {t('whatIfSub')}
           </p>
         </div>
 
@@ -75,7 +76,7 @@ export const WhatIfPage: React.FC = () => {
           className="px-4 py-2.5 rounded-xl bg-amber-50 text-amber-900 border border-amber-300 font-bold text-xs hover:bg-amber-100 transition-colors flex items-center gap-1.5 shadow-2xs"
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-          <span>Load Hackathon Demo Scenario</span>
+          <span>{t('Load Hackathon Demo Scenario')}</span>
         </button>
       </div>
 

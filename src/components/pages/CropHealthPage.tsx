@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 export const CropHealthPage: React.FC = () => {
-  const { fields } = useFarm();
+  const { fields, t } = useFarm();
   const [activeCropId, setActiveCropId] = useState<string>('field-a');
 
   const selectedField = fields.find((f) => f.id === activeCropId) || fields[0];
@@ -23,13 +23,13 @@ export const CropHealthPage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-            Biometric Crop Surveillance
+            {t('navCrops')}
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif mt-1">
-            Crop Health & Stress Modeling
+            {t('cropHealthPageTitle')}
           </h1>
           <p className="text-xs sm:text-sm text-stone-500 mt-0.5">
-            Phenological canopy index tracking moisture, thermal strain, and nutrient uptake.
+            {t('cropHealthPageSub')}
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export const CropHealthPage: React.FC = () => {
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              {f.cropName} ({f.stage})
+              {t(f.cropName)}
             </button>
           ))}
         </div>

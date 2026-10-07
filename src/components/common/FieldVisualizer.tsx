@@ -12,7 +12,7 @@ export const FieldVisualizer: React.FC<FieldVisualizerProps> = ({
   interactive = true,
   compact = false
 }) => {
-  const { fields, setSelectedFieldId, setActivePage, tomatoAnomalyActive } = useFarm();
+  const { fields, setSelectedFieldId, setActivePage, tomatoAnomalyActive, t } = useFarm();
 
   const handleFieldClick = (fieldId: string) => {
     if (!interactive) return;
@@ -32,9 +32,9 @@ export const FieldVisualizer: React.FC<FieldVisualizerProps> = ({
           <div className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
           <div>
             <h3 className="text-white text-base sm:text-lg font-bold tracking-tight flex items-center gap-2">
-              <span>Green Valley Zone Map</span>
+              <span>{t('Green Valley Zone Map')}</span>
               <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
-                Live Sensor Telemetry
+                {t('Live Sensor Telemetry')}
               </span>
             </h3>
             <p className="text-stone-400 text-xs">
@@ -46,7 +46,7 @@ export const FieldVisualizer: React.FC<FieldVisualizerProps> = ({
           {tomatoAnomalyActive && (
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold animate-pulse">
               <AlertTriangle className="w-3.5 h-3.5" />
-              <span>Fault Injection Active</span>
+              <span>{t('Fault Injection Active')}</span>
             </div>
           )}
           <span className="text-xs text-stone-400 hidden sm:inline-flex items-center gap-1">
@@ -97,13 +97,13 @@ export const FieldVisualizer: React.FC<FieldVisualizerProps> = ({
                   <div className="flex items-center gap-1.5">
                     <span className="text-xs font-mono text-stone-400">ZONE {field.id.split('-')[1].toUpperCase()}</span>
                     <span className="text-[10px] px-1.5 py-0.5 rounded bg-stone-800 text-stone-300 font-medium">
-                      Priority #{field.priorityRank}
+                      {t('Priority')} #{field.priorityRank}
                     </span>
                   </div>
                   <h4 className="text-white text-lg font-bold group-hover:text-emerald-300 transition-colors">
-                    {field.cropName}
+                    {t(field.cropName)}
                   </h4>
-                  <p className="text-xs text-stone-400">{field.stage} Stage</p>
+                  <p className="text-xs text-stone-400">{t(field.stage)} {t('Stage')}</p>
                 </div>
                 <RiskBadge level={field.stressRisk} size="sm" />
               </div>
@@ -113,7 +113,7 @@ export const FieldVisualizer: React.FC<FieldVisualizerProps> = ({
                 <div className="flex justify-between items-center text-xs mb-1.5">
                   <span className="text-stone-400 flex items-center gap-1">
                     <Droplets className="w-3.5 h-3.5 text-sky-400" />
-                    Soil Moisture
+                    {t('soilMoisture')}
                   </span>
                   <span className={`font-mono font-bold text-sm ${
                     field.soilMoisture < 30 ? 'text-amber-400' : 'text-emerald-400'

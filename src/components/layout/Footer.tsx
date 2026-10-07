@@ -3,7 +3,7 @@ import { useFarm } from '../../context/FarmContext';
 import { ShieldCheck, Award, ExternalLink } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const { setActivePage, setIsJudgeTourOpen, applyJudgeScenarioStep } = useFarm();
+  const { setActivePage, setIsJudgeTourOpen, applyJudgeScenarioStep, t } = useFarm();
 
   return (
     <footer className="bg-stone-900 text-stone-300 border-t border-stone-800 mt-16">
@@ -16,16 +16,16 @@ export const Footer: React.FC = () => {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <span className="text-xl font-bold text-white tracking-tight font-serif">
-                AGRI-TRUST
+                {t('appName')}
               </span>
             </div>
             <p className="text-sm text-stone-400 max-w-sm leading-relaxed">
-              Risk-aware agricultural decision intelligence. Moving beyond standard single-threshold timers to optimize water allocation under severe constraints, variable weather, and uncertain sensor telemetry.
+              {t('subHero')}
             </p>
             <div className="pt-2">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-700/50 text-emerald-300 text-xs font-semibold">
                 <Award className="w-3.5 h-3.5" />
-                <span>Built for Smart Agriculture & Farming Hackathon</span>
+                <span>{t('Built for Smart Agriculture & Farming Hackathon')}</span>
               </div>
             </div>
           </div>
@@ -33,21 +33,21 @@ export const Footer: React.FC = () => {
           {/* Core Problem */}
           <div>
             <h4 className="text-xs font-bold text-stone-200 uppercase tracking-wider mb-3">
-              The Real Problem
+              {t('The Real Problem')}
             </h4>
             <ul className="space-y-2 text-xs text-stone-400">
-              <li>• Limited reservoir water</li>
-              <li>• Faulty & uncalibrated sensors</li>
-              <li>• Grid power outage windows</li>
-              <li>• Sudden rainfall shifts</li>
-              <li>• High cost of flower abortion</li>
+              <li>• {t('Limited reservoir water')}</li>
+              <li>• {t('Faulty & uncalibrated sensors')}</li>
+              <li>• {t('Grid power outage windows')}</li>
+              <li>• {t('Sudden rainfall shifts')}</li>
+              <li>• {t('High cost of flower abortion')}</li>
             </ul>
           </div>
 
           {/* Solution & Tech */}
           <div>
             <h4 className="text-xs font-bold text-stone-200 uppercase tracking-wider mb-3">
-              Solution Pillars
+              {t('Solution Pillars')}
             </h4>
             <ul className="space-y-2 text-xs text-stone-400">
               <li>
@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
                   onClick={() => setActivePage('simulator')}
                   className="hover:text-emerald-400 transition-colors text-left"
                 >
-                  Water Allocation Simulator
+                  {t('navSimulator')}
                 </button>
               </li>
               <li>
@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
                   onClick={() => setActivePage('explanation')}
                   className="hover:text-emerald-400 transition-colors text-left"
                 >
-                  Explainable Decision Logic
+                  {t('navExplanation')}
                 </button>
               </li>
               <li>
@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
                   onClick={() => setActivePage('sensors')}
                   className="hover:text-emerald-400 transition-colors text-left"
                 >
-                  Sensor Fault Cross-Validation
+                  {t('navSensors')}
                 </button>
               </li>
               <li>
@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
                   onClick={() => setActivePage('whatif')}
                   className="hover:text-emerald-400 transition-colors text-left"
                 >
-                  Constraint-Aware Scenarios
+                  {t('navWhatIf')}
                 </button>
               </li>
             </ul>
@@ -88,7 +88,7 @@ export const Footer: React.FC = () => {
           {/* Demo & Hackathon Links */}
           <div>
             <h4 className="text-xs font-bold text-stone-200 uppercase tracking-wider mb-3">
-              Hackathon Evaluation
+              {t('Hackathon Evaluation')}
             </h4>
             <ul className="space-y-2 text-xs text-stone-400">
               <li>
@@ -99,7 +99,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="text-emerald-400 font-semibold hover:underline flex items-center gap-1"
                 >
-                  <span>Launch 90s Judge Tour</span>
+                  <span>{t('Launch 90s Judge Tour')}</span>
                   <ExternalLink className="w-3 h-3" />
                 </button>
               </li>
@@ -108,7 +108,7 @@ export const Footer: React.FC = () => {
                   onClick={() => setActivePage('dashboard')}
                   className="hover:text-emerald-400 transition-colors"
                 >
-                  Farmer Dashboard View
+                  {t('navDashboard')}
                 </button>
               </li>
               <li>
@@ -116,7 +116,7 @@ export const Footer: React.FC = () => {
                   onClick={() => setActivePage('settings')}
                   className="hover:text-emerald-400 transition-colors"
                 >
-                  Farm Profile & Constraints
+                  {t('navSettings')}
                 </button>
               </li>
             </ul>
@@ -126,10 +126,10 @@ export const Footer: React.FC = () => {
         {/* Bottom Banner */}
         <div className="mt-12 pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
           <div>
-            &copy; 2026 AgriTrust Project. All rights reserved. Demonstrator prototype for academic and hackathon evaluation.
+            &copy; 2026 AgriTrust Project. {t('All rights reserved.')}
           </div>
           <div className="italic text-stone-400 text-center sm:text-right">
-            "Don't just irrigate. Prioritize risk."
+            "{t('secondaryTagline')}"
           </div>
         </div>
       </div>

@@ -143,7 +143,7 @@ export const CropSelectorModal: React.FC = () => {
                         {isSelected && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
                       </div>
                       <h4 className="text-sm font-bold text-stone-900 leading-tight">
-                        {crop.name}
+                        {t(crop.name)}
                       </h4>
                       <p className="text-[10px] text-stone-500 italic truncate mt-0.5">
                         {crop.scientificName}
@@ -152,11 +152,11 @@ export const CropSelectorModal: React.FC = () => {
 
                     <div className="pt-2 border-t border-stone-200/80 text-[10px] space-y-0.5">
                       <div className="flex justify-between text-stone-600">
-                        <span>Target:</span>
+                        <span>{t('Target')}:</span>
                         <span className="font-bold">{crop.optimalMoistureMin}%–{crop.optimalMoistureMax}%</span>
                       </div>
                       <div className="flex justify-between text-sky-800 font-bold">
-                        <span>Need:</span>
+                        <span>{t('Water')}:</span>
                         <span>{crop.baseWaterNeedLiters} L</span>
                       </div>
                     </div>
@@ -183,7 +183,7 @@ export const CropSelectorModal: React.FC = () => {
                         : 'bg-white border-stone-200 text-stone-700 hover:bg-stone-100'
                     }`}
                   >
-                    {stg}
+                    {t(stg)}
                   </button>
                 ))}
               </div>

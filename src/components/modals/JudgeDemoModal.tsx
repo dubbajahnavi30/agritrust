@@ -18,7 +18,8 @@ export const JudgeDemoModal: React.FC = () => {
     applyJudgeScenarioStep,
     availableWater,
     rainCondition,
-    tomatoAnomalyActive
+    tomatoAnomalyActive,
+    t
   } = useFarm();
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -212,7 +213,7 @@ export const JudgeDemoModal: React.FC = () => {
             }`}
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            <span>{isPlaying ? 'Pause Autoplay' : 'Autoplay Demo'}</span>
+            <span>{isPlaying ? t('Pause Autoplay') : t('Autoplay Demo')}</span>
           </button>
 
           {/* Navigation buttons */}
@@ -223,7 +224,7 @@ export const JudgeDemoModal: React.FC = () => {
               className="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <ChevronLeft className="w-4 h-4" />
-              <span>Back</span>
+              <span>{t('Back')}</span>
             </button>
 
             {judgeTourStep < steps.length - 1 ? (
@@ -231,7 +232,7 @@ export const JudgeDemoModal: React.FC = () => {
                 onClick={() => applyJudgeScenarioStep(judgeTourStep + 1)}
                 className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-600 shadow-xs transition-all"
               >
-                <span>Next Step</span>
+                <span>{t('Next Step')}</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             ) : (
@@ -243,7 +244,7 @@ export const JudgeDemoModal: React.FC = () => {
                 className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-600 shadow-xs transition-all"
               >
                 <CheckCircle2 className="w-4 h-4" />
-                <span>Finish Tour</span>
+                <span>{t('Finish Tour')}</span>
               </button>
             )}
           </div>

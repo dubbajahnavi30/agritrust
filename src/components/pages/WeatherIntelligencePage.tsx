@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 
 export const WeatherIntelligencePage: React.FC = () => {
-  const { weather, rainCondition, setRainCondition } = useFarm();
+  const { weather, rainCondition, setRainCondition, t } = useFarm();
 
   const impactData = {
     none: {
@@ -39,13 +39,13 @@ export const WeatherIntelligencePage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-            Microclimate Radar & Forecast
+            {t('navWeather')}
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif mt-1">
-            Weather Intelligence
+            {t('weatherPageTitle')}
           </h1>
           <p className="text-xs sm:text-sm text-stone-500 mt-0.5">
-            Atmospheric moisture demand, precipitation probability, and wind evaporation indexing.
+            {t('weatherPageSub')}
           </p>
         </div>
 
